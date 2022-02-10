@@ -1,0 +1,26 @@
+# color
+xsetroot -solid "#002635" &
+
+# wall
+nitrogen --restore &
+
+# compositor
+xcompmgr &
+
+# clipboard
+parcellite &
+
+# keyboard
+setxkbmap br &
+
+# resolution
+# xrandr --output eDP-1 --scale 1.2x1.2 &
+
+# readblind
+redshift-gtk &
+
+# volume control
+volumeicon &
+
+# printscreen
+flameshot &
