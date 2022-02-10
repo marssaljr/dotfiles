@@ -1,0 +1,298 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+; barrinha bonitinha fds
+;
+;==========================================================
+
+[colors]
+cor = ${xrdb:color0}
+;background = "#ff${cor}"
+background = ${xrdb:color0:#222}
+
+;background = ${xrdb:color0_alpha}
+;background = #222
+background-alt = #444
+foreground = ${xrdb:color7:#222}
+;foreground = #dfdfdf
+foreground-alt = #555
+;primary = #ffb52a
+primary = ${xrdb:color1:#ffb52a}
+secondary = ${xrdb:color2:#e60053}
+terceira = ${xrdb:color3:#e60053}
+quarta = ${xrdb:color4:#e60053}
+quinta = ${xrdb:color5:#e60053}
+sexta = ${xrdb:color6:#e60053}
+setima = ${xrdb:color10:#e60053}
+oitava = ${xrdb:color11:#e60053}
+alert = #bd2c40
+
+[bar/example]
+;monitor = ${env:MONITOR:eDP-1}
+width = 100%
+height = 15
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = ${colors.secondary}
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = fixed:pixelsize=9;1
+;font-1 = unifont:fontformat=truetype:size=9:antialias=false;0
+;font-1 = siji:pixelsize=9;1
+font-1 = DroidSansMonoNerdFontMono:style=Book:size=15;3
+;font-4 = NotoSansSymbols2:style=Regular:size=10;3
+font-2 = FontAwesome5Free:style=Solid:size=10;3
+;14
+;font-4 = devicon:style=Regular:size=10;3
+;14
+;font-5 = NotoColorEmoji:style=Regular:size=10;3
+;fc-match -a | grep -i "noto"
+
+tray-position = right
+tray-padding = 0
+tray-background = ${colors.oitava}
+
+modules-left = powermenu i3
+modules-center = xwindow
+modules-right = filesystem pulseaudio memory cpu date
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+;label = %title:0:30:...%
+label = "%title:0:20:%"
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+;〈 〉
+; ⟨
+; ⟨ ⟩
+;
+;
+format-prefix = ""
+format-prefix-foreground =  ${colors.secondary}
+format-prefix-background = ${colors.quarta}
+
+label-layout ="  %layout%  "
+;label-layout-underline = ${colors.secondary}
+label-layout-background = ${colors.secondary}
+label-indicator-background = ${colors.secondary}
+;label-indicator-underline = ${colors.secondary}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+format-prefix = ""
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-prefix = "a"
+label-mode-padding = 0
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.primary}
+label-focused-underline= ${colors.quarta}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = ""
+format-prefix-foreground =  ${colors.primary}
+format-prefix-background =  ${colors.quinta}
+
+;format-underline = #f90000
+label =  %percentage:2%%
+label-background = ${colors.primary}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = ""
+format-prefix-foreground = ${colors.quinta}
+format-prefix-background = ${colors.quarta}
+;format-underline = #4bffdc
+label = "  %percentage_used%% "
+format-background = ${colors.quinta}
+
+[module/eth]
+type = internal/network
+interface = enp2s0
+interval = 3.0
+
+;format-connected-underline = #55aa55
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.setima}
+format-connected-prefix-background = ${colors.primary}
+rede = " 🖧  %local_ip%  "
+rede-alt = " 🖧 "
+label = "%rede%"
+label-connected-background = ${colors.setima}
+
+format-disconnected = 🖧 
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = " %A "
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = ""
+format-connected-prefix-foreground = ${colors.quinta}
+format-prefix-background = ${colors.primary}
+
+format-prefix-foreground = ${colors.oitava}
+
+label = "  %date% %time% "
+format-sufix = "a"
+format-background = ${colors.oitava}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+format-volume-prefix = ""
+format-volume-prefix-foreground =  ${colors.quarta}
+;format-volume-background = ${colors.quarta}
+
+label-volume = "  %percentage%% "
+label-volume-foreground = ${root.foreground}
+label-volume-background = ${colors.quarta}
+
+label-muted = " muted "
+format-muted-prefix = ""
+format-muted-foreground = ${colors.quarta}
+label-muted-background = ${colors.quarta}
+label-muted-foreground = ${colors.foreground}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 2
+
+label-open = "  "
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
