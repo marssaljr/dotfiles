@@ -1,0 +1,12 @@
+# navigation
+alias ..="cd .."
+
+# git
+alias g="git"
+alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+
+# vim
+alias v="vim"
+
+# py
+alias py="python3"
