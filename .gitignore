@@ -1,0 +1,18 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitconfig
+!.gitignore
+!.vimrc
+!.i3
+!.kitty.conf
+!.mpv.conf
+!.redshift.conf
+!.polybar
+!.config/polybar
+!.bashrc
+!.xprofile
+!.alacritty.yml
+!.aliases
+!.tmux.conf

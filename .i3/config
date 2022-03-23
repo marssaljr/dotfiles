@@ -9,9 +9,9 @@ set $mod Mod4
 
 
 # Gaps
-#gaps inner 5
-#gaps outer 10
-
+gaps inner 0
+gaps outer 0 
+#client.alacritty 5 #000000
 
 # Fonts
 ##font pango:monospace 8
@@ -20,7 +20,8 @@ font xft:Fira Code 6
 ##font pango:DejaVu Sans Mono 8
 
 # Window
-for_window [class="kitty"] border pixel 3
+for_window [class="alacritty"] border pixel 0
+for_window [class="vim"] border pixel 0
 for_window [class="^.*"] border none
 
 
@@ -28,7 +29,8 @@ for_window [class="^.*"] border none
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec_always --no-startup-id wal -R && nitrogen --restore
+exec_always --no-startup-id wal -R
+exec_always --no-startup-id nitrogen --restore
 exec --no-startup-id clipit
 exec --no-startup-id flameshot
 ##exec --no-startup-id pulseaudio --start
@@ -56,7 +58,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a 
-bindsym $mod+Return exec kitty --class Terminal
+# bindsym $mod+Return exec kitty --class Terminal
+bindsym $mod+Return exec alacritty --class alacritty
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
@@ -156,27 +159,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 ## resize window
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+                bindsym k resize grow height 10 px or 10 ppt
+                bindsym l resize shrink height 10 px or 10 ppt
+                bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+                bindsym Left resize shrink width 10 px or 10 ppt
+                bindsym Down resize grow height 10 px or 10 ppt
+                bindsym Up resize shrink height 10 px or 10 ppt
+                bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+# back to normal: Enter or Escape or $mod+r
+                bindsym Return mode "default"
+                bindsym Escape mode "default"
+                bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"

@@ -3,8 +3,10 @@ set relativenumber "set rnu set nu
 set number
 set fillchars+=vert:\
 set nocompatible
+" set termguicolors
+" set t_Co=256
+set term=xterm-256color
 set termguicolors
-set t_Co=256
 " set cursorline
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
@@ -24,6 +26,15 @@ augroup autoindent
 augroup End
 
 " -- fonts --
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=mononoki\ Nerd\ Font:12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
 set guifont=mononoki\ Nerd\ Font:s12
 "set guifont=DroidSansMono\ Nerd\ Font:s12
 " set guifont=Menlo:s12
@@ -112,9 +123,8 @@ colorscheme nord
 let g:one_allow_italics = 1
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-
 " transparent bg
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
 " vim sense
 " let g:vimsence_client_id = '439476230543245312'

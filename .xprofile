@@ -17,10 +17,13 @@ setxkbmap br &
 # xrandr --output eDP-1 --scale 1.2x1.2 &
 
 # readblind
-redshift-gtk &
+# redshift-gtk &
 
 # volume control
-volumeicon &
+# volumeicon &
 
 # printscreen
 flameshot &
+
+# notify
+dunst &

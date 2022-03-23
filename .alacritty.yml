@@ -1,55 +1,110 @@
-window:
-  padding:
-    x: 10
-    y: 10
+env:
+  TERM: xterm-256color
 
-background_opacity: 0.95
+window:
+  dynamic_padding: true
+  startup_mode: Maximized
+  decorations: None
+  padding:
+    x: 2
+    y: 0
+
+window.opacity: 0.95
 
 draw_bold_text_with_bright_colors: true
 
 font:
   normal:
-    family: DejaVu Sans Mono
+    family: Fira Code
     style: Regular
-
   bold:
-    family: DejaVu Sans Mono
+    family: mononoki NF
     style: Bold
-
   italic:
-    family: DejaVu Sans Mono
+    family: mononoki NF
+    style: BoldItalic
+  size: 10.0
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+  use_thin_strokes: true
 
-  use_thin_strokes: false
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  # When set to `true`, selected text will be copied to the primary clipboard.
+save_to_clipboard: true
+
+live_config_reload: true
+
+scrolling:
+  # maximum number of lines in the scrollback buffer. Specifying '0' will
+  # disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+multiplier: 3
+
+mouse:
+  hide_when_typing: true
+
+cursor:
+  # Values for 'style':
+  # - ▇ Block
+  # - _ Underline
+  # - | Beam
+  style: Block
+  unfocused_hollow: true
 
 colors:
-    # Default colors
-    primary:
-      background: '0x002635'
-      foreground: '0xe6e6dc'
-
-    # Normal colors
-    normal:
-      black:   '0x00384d'
-      red:     '0xc43061'
-      green:   '0x7fc06e'
-      yellow:  '0xf08e48'
-      blue:    '0x1c8db2'
-      magenta: '0xc694ff'
-      cyan:    '0x00cccc'
-      white:   '0x77929e'
-
-    # Bright colors
-    bright:
-      black:   '0x517f8d'
-      red:     '0xff5a67'
-      green:   '0x9cf087'
-      yellow:  '0xffcc1b'
-      blue:    '0x7eb2dd'
-      magenta: '0xfb94ff'
-      cyan:    '0x00ffff'
-      white:   '0xb7cff9'
-
+  primary:
+    background: '#2e3440'
+    foreground: '#d8dee9'
+    dim_foreground: '#a5abb6'
     cursor:
-      text: "0x002635"
-      cursor: "0xffcc1b"
+      text: '#2e3440'
+      cursor: '#d8dee9'
+      vi_mode_cursor:
+        text: '#2e3440'
+        cursor: '#d8dee9'
+        selection:
+          text: CellForeground
+          background: '#4c566a'
+          search:
+            matches:
+              foreground: CellBackground
+              background: '#88c0d0'
+              bar:
+                background: '#434c5e'
+                foreground: '#d8dee9'
+                normal:
+                  black: '#3b4252'
+                  red: '#bf616a'
+                  green: '#a3be8c'
+                  yellow: '#ebcb8b'
+                  blue: '#81a1c1'
+                  magenta: '#b48ead'
+                  cyan: '#88c0d0'
+                  white: '#e5e9f0'
+                  bright:
+                    black: '#4c566a'
+                    red: '#bf616a'
+                    green: '#a3be8c'
+                    yellow: '#ebcb8b'
+                    blue: '#81a1c1'
+                    magenta: '#b48ead'
+                    cyan: '#8fbcbb'
+                    white: '#eceff4'
+                    dim:
+                      black: '#373e4d'
+                      red: '#94545d'
+                      green: '#809575'
+                      yellow: '#b29e75'
+                      blue: '#68809a'
+                      magenta: '#8c738c'
+                      cyan: '#6d96a5'
+                      white: '#aeb3bb'
 
